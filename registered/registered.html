@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="../css/registered.css" />
+		<title>注册</title>
+	</head>
+	<body>
+		<div class="fixed-background">
+			<div class="container-card">
+				<div class="siteLogo___1EpOK">
+					<h1 class="jsx-1447149503">与百万创作人一起成长</h1>
+				</div>
+				<div class="froms-info">
+					<div style="padding: 30px;">
+						<h4 class="card-title">注册</h4>
+						<form id="info" action="" target="_self" method="get" class="ant-form" >
+							<div class="user">
+								<div class="text"><input class="username" type="text" name="username" placeholder="请输入用户名" /></div>
+							</div>
+							<p class="username_text"></p>
+							<div class="user">
+								<div class="text"><input class="phone" type="text" name="phone" placeholder="请输入电话号码" /></div>
+							</div>
+							<p class="phone_text"></p>
+							<div class="user">
+								<div class="text"><input class="email" type="text" name="email" placeholder="请输入邮箱" /></div>
+							</div>
+							<p class="email_text"></p>
+							<div class="password">
+								<div class="text"><input class="password1" type="password" name="username" placeholder="请输入密码" /></div>
+							</div>
+							<p class="password_text"></p>
+							<div class="submit">
+								<button id="register" type="button">注册</button>
+							</div>
+							<div class="tips">
+								<span class="text-notice">
+									注册即代表同意
+									<a  href="#">《汪视频用户协议》</a>
+								</span>
+							</div>
+						</form>
+					</div>
+					<div class="add-logo">
+						<span>已有账号？去登录</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script>
+		function checkUsername() {
+			var username = $(".username").val();
+			if (username == "") {
+				$(".username_text").html("用户名不能为空！");
+				return false;
+			} else {
+				$(".username_text").html("");
+				return true;
+			}
+		}
+
+		function checkPhone() {
+			var phone = $(".phone").val();
+			if (phone != "") {
+				if (!(/^1[3456789]\d{9}$/.test(phone))) {
+					$(".phone_text").html("电话号码格式不正确！");
+					return false;
+				} else {
+					$(".phone_text").html("");
+					return true;
+				}
+			} else {
+				$(".phone_text").html("电话号码不能为空！");
+				return false;
+			}
+		}
+
+		function checkEmail() {
+			var email = $(".email").val();
+			if (email != "") {
+				if (!(/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(email))) {
+					$(".email_text").html("邮箱格式不正确！");
+					return false;
+				} else {
+					$(".email_text").html("");
+					return true;
+				}
+			} else {
+				$(".email_text").html("邮箱格式不能为空！");
+				return false;
+			}
+		}
+
+		function checkPassword() {
+			var password = $(".password1").val();
+			if (password == "") {
+				$(".password_text").html("密码不能为空！");
+				return false;
+			} else {
+				$(".password_text").html("");
+				return true;
+			}
+		}
+
+		$(document).ready(function() {
+			$("#register").click(function() {
+				if (checkEmail() && checkPhone() && checkUsername() && checkPassword()) {
+					$("#info").submit();
+				} else {
+					checkEmail();
+					checkPhone();
+					checkUsername();
+					checkPassword();
+				}
+			});
+			$(document).keyup(function(event) {
+				if (event.keyCode == 13) {
+					if (checkEmail() && checkPhone() && checkUsername() && checkPassword()) {
+						$("#info").submit();
+					} else {
+						checkEmail();
+						checkPhone();
+						checkUsername();
+						checkPassword();
+					}
+				}
+			})
+		})
+	</script>
+</html>

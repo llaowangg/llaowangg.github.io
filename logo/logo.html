@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+	<link rel="stylesheet" href="../css/logo.css" />
+</head>
+<body>
+<div class="form">
+	
+    <div class="title">欢迎登录</div>
+    <div class="content">
+        <form id="info" action="../index.html"  method="get" onsubmit="return goidex()">
+            <div class="user">
+                <div class="text">
+					<input class="username" type="text" name="username" placeholder="请输入用户名"  oninput="checkUser()"/>
+				</div>
+            </div>
+            <p class="username_text"></p>
+            <div class="password">
+                <div class="text"><input class="password1" type="password" name="password" placeholder="请输入密码"/></div>
+            </div>
+            <p class="password_text"></p>
+            <div class="reset"><a href="resetPassword.html">忘记密码？</a></div>
+            <div class="submit" >
+                <button id="login" type="button" onclick="submit()" >登录</button>
+            </div>
+			<div class="add-logo">
+				<span ><a href="../registered/registered.html">去注册</a></span>
+			</div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="../js/jquery-3.3.1.min.js" charset="UTF-8"></script>
+<script>
+	function checkUsername() {
+	    var username = $(".username").val();
+	    if (username == 0) {
+	        $(".username_text").html("用户名不能为空！");
+	        return false;
+	    } else {
+	        $(".username_text").html("");
+	        return true;
+	    }
+		return true
+		
+	}
+	
+	function checkPassword() {
+	    var password = $(".password1").val();
+	    if (password == "") {
+	        $(".password_text").html("密码不能为空！");
+	        return false;
+	    } else {
+	        $(".password_text").html("");
+	        return true;
+	    }
+		
+	}
+	function goidex() {
+		var password = $(".password1").val();
+		var username = $(".username").val();
+		if (username.length < 6) {
+			alert("用户名不得小于6位");
+			return false
+		} else if (password.length < 8) {
+			alert("密码不得小于8位");
+			return false
+		} else {
+			alert("登陆成功");
+			return true;
+		}
+	}
+	
+	// $(document).ready(function(){
+	//     $("#login").click(function () {
+	//         if (checkUsername() && checkPassword()) {
+	//             $("#info").submit();
+	//         } else {
+	//             checkUsername();
+	//             checkPassword();
+	//         }
+	//     });
+	//     $(document).keyup(function (event) {
+	//         if (event.keyCode == 13) {
+	//             if (checkUsername() && checkPassword()) {
+	//                 $("#info").submit();
+	//             } else {
+	//                 checkUsername();
+	//                 checkPassword();
+	//             }
+	//         }
+	//     })
+</script>
+</html>
